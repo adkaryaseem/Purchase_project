@@ -35,6 +35,5 @@ Route::get("entry/create",[EntryController::class,"create"])->name("entry.create
 Route::post("entry/store",[EntryController::class,"store"])->name("entry.store");
 Route::get("entry/edit/{id}",[EntryController::class,"edit"])->name("entry.edit");
 Route::post("entry/update/{id}",[EntryController::class,"update"])->name("entry.update");
-Route::delete("entry/delete/{id}",[ProductController::class,"delete"])->name("entry.delete");
-
-
+Route::delete("entry/delete/{id}",[EntryController::class,"delete"])->name("entry.delete");
+Route::get("entry/search",[EntryController::class,"search"])->name("entry.search");

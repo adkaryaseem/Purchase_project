@@ -8,7 +8,13 @@
 </head>
 <body>
     <a href="{{ route('entry.create') }}">Create Entry</a>
-    <table>
+
+        <form action="{{ route('entry.search') }}" method="GET">
+            <input type="text" name="search" id="search">
+            <button type="submit">Search</button>
+        </form>
+
+    <table width="100%" border="1">
         <tr>
             <th>
                 Bill No.
@@ -24,6 +30,9 @@
             </th>
             <th>
                 Rate
+            </th>
+            <th colspan="2">
+                Action
             </th>
         </tr>
         @foreach ($entries as $entry)
@@ -43,6 +52,16 @@
                 <td>
                     {{ $entry->rate }}
                 </td>
+                <td>
+                <a href="{{ route('entry.edit',[$entry->id]) }}">Edit</a>
+                </td>
+                <td>
+                        <form action="{{ route('entry.delete',[$entry->id]) }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
             </tr>
         @endforeach
     </table>

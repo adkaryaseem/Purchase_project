@@ -47,12 +47,7 @@ class EntryController extends Controller
      */
     public function show($id)
     {
-        Entry::where([
-            "date"=>$id->date,
-            "quantity"=>$id->quantity,
-            "rate"=>$id->rate,
-            "product_id"=>$id->product
-        ]);
+      //
     }
 
     /**
@@ -60,7 +55,9 @@ class EntryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $entry = Entry::where('id','=',$id)->first();
+        $products = Product::all();
+        return view('entry.edit',compact('entry','products'));
     }
 
     /**
@@ -68,14 +65,33 @@ class EntryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Entry::where("id","=",$id)->update([
+            "date"=>$request->date,
+            "quantity"=>$request->quantity,
+            "rate"=>$request->rate,
+            "product_id"=>$request->product
+        ]);
+        return redirect()->route("entry.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Entry::where("id", "=",$id)->delete();
+        return redirect()->route('entry.index');
+    }
+
+    /**
+     * Search the specified data
+     */
+
+    public function search(Request $request)
+    {
+       $entries = Entry::where("id", "=",$request->search)->get();
+        return view("entry.index",compact('entries'));
     }
 }
+
+
