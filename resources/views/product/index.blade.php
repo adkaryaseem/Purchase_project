@@ -11,7 +11,7 @@
     {{-- <a href="{{ route('product.edit') }}"><h1>Edit Product Entry</h1></a> --}}
     {{-- {{dd($products)}} --}}
 
-    <table>
+    <table width="100%" border="2">
         <tr>
             <th>
                 S.N. 
@@ -19,7 +19,7 @@
             <th>
                 Name :
             </th>
-            <th>
+            <th colspan="2">
                 Action 
             </th>
         </tr>
