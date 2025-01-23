@@ -43,14 +43,6 @@ class EntryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-      //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
@@ -84,6 +76,7 @@ class EntryController extends Controller
     }
 
     /**
+     * Display the specified resource.
      * Search the specified data
      */
 
